@@ -4,7 +4,7 @@ import Home from './Home'
 import Navbar from './Navbar'
 import Players from './Players'
 import Teams from './Teams'
-
+import TeamPage from './TeamPage'
 class App extends Component {
   render() {
     return (
