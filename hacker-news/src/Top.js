@@ -2,6 +2,12 @@ import React from 'react'
 
 export default class Top extends React.Component {
 
+    state = {
+        selectedType: 'New',
+        stories: {},
+        error: null,
+    }
+
     
 
     isLoading = () => {
@@ -10,6 +16,10 @@ export default class Top extends React.Component {
     }
     
     render() {
-        return null;
+        return(
+            <li>
+                <ul>Hello</ul>
+            </li>
+        );
     }
 }
