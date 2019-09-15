@@ -30,16 +30,32 @@ export default class Posts extends React.Component {
     }
 
     isLoading = () => {
-        // this would call the hackerrank api to get the thing working here
-        return null;
+        console.log("this is null or not?", this.state.posts)
+        return this.state.posts == null        
     }
     
     render() {
+
         return(
-            <li>
-                <ul>Hello</ul>
-            </li>
-        );
+            <React.Fragment>
+                <li>
+                    <ul>Hello</ul>
+                </li>
+
+                {this.isLoading() && <p>LOADING</p>}
+                
+                {this.state.posts && 
+                    
+                    (this.state.posts).map((postInfo) => (
+                        <li key={postInfo.id} className='post'>
+                            <h2>{postInfo.url}</h2>
+                            <span>by - {postInfo.by} </span>
+                            <span>on - {postInfo.time}</span>
+                        </li>
+                    ))
+                }
+            </React.Fragment>
+        )
     }
 }
 
