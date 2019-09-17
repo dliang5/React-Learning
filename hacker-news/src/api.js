@@ -27,9 +27,14 @@ export function fetchComments (ids) {
     .then((comments) => removeDeleted(onlyComments(removeDead(comments))))
 }
 
+/*
+  this fetches all the main posts of type top or new and converts them to json.
+  it limits the posts to 50 and it then converts all the ids and calls fetchItem which gets each individual post
+
+*/
 export function fetchMainPosts (type) {
   return fetch(`${api}/${type}stories${json}`)
-    .then((res) => res.json())
+    .then((res) => res.json()) 
     .then((ids) => {
       if (!ids) {
         throw new Error(`There was an error fetching the ${type} posts.`)
@@ -38,7 +43,7 @@ export function fetchMainPosts (type) {
       return ids.slice(0, 50)
     })
     .then((ids) => Promise.all(ids.map(fetchItem)))
-    .then((posts) => removeDeleted(onlyPosts(removeDead(posts))))
+    .then((posts) => removeDeleted(onlyPosts(removeDead(posts)))) // not too sure the reason for this specific section.
 }
 
 export function fetchUser (id) {

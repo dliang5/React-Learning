@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchMainPosts } from './api'
 import PropTypes from 'prop-types'
+import Loading from './Loading'
 
 export default class Posts extends React.Component {
 
@@ -10,6 +11,7 @@ export default class Posts extends React.Component {
         loading: true,
     }
 
+    // as soon as this component is called, it will handle fetch of "top" for right now
     componentDidMount() {
         this.handleFetch()
     }
@@ -29,12 +31,12 @@ export default class Posts extends React.Component {
             }))
     }
 
-    isLoading = () => {
-        console.log("this is null or not?", this.state.posts)
-        return this.state.posts == null        
-    }
     
     render() {
+
+        if (this.state.loading === true) {
+            return <Loading />
+        }
 
         return(
             <React.Fragment>
@@ -42,8 +44,10 @@ export default class Posts extends React.Component {
                     <ul>Hello</ul>
                 </li>
 
-                {this.isLoading() && <p>LOADING</p>}
-                
+                {/* this map through all of the post produced from handlefetch() 
+                    TODO: make sure to have this converted into a post component i guess once you have the minimal product working.
+                */}
+
                 {this.state.posts && 
                     
                     (this.state.posts).map((postInfo) => (
