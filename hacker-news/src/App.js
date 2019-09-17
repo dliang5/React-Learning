@@ -8,6 +8,7 @@ class App extends Component {
       <div className='container'>
         <Nav />
         <Posts type='top' />
+        <Posts type='new' />
       </div>
     );
   }

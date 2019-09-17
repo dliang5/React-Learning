@@ -33,12 +33,14 @@ export default class Posts extends React.Component {
 
     
     render() {
-
+        
+        // this is default loading screen here.
         if (this.state.loading === true) {
             return <Loading />
         }
 
         return(
+            // React Fragment is required if there is more than one things being returned here
             <React.Fragment>
                 <li>
                     <ul>Hello</ul>
@@ -47,14 +49,14 @@ export default class Posts extends React.Component {
                 {/* this map through all of the post produced from handlefetch() 
                     TODO: make sure to have this converted into a post component i guess once you have the minimal product working.
                 */}
-
                 {this.state.posts && 
                     
                     (this.state.posts).map((postInfo) => (
                         <li key={postInfo.id} className='post'>
-                            <h2>{postInfo.url}</h2>
-                            <span>by - {postInfo.by} </span>
-                            <span>on - {postInfo.time}</span>
+                            <h4 className='link'>{postInfo.title}</h4>
+                            <span>by {postInfo.by} </span>
+                            <span>on {new Date(postInfo.time).toUTCString()} </span>
+                            <span>with {postInfo.descendants} comments</span>
                         </li>
                     ))
                 }

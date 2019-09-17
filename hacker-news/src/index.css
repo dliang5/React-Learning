@@ -28,6 +28,12 @@ li {
   min-height: 100%;
 }
 
+.link {
+  color: rgb(187, 46, 31);
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .space-around {
   justify-content: space-around
 }
