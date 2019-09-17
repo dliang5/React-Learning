@@ -2,6 +2,7 @@ import React from 'react'
 import { fetchMainPosts } from './api'
 import PropTypes from 'prop-types'
 import Loading from './Loading'
+import PostsList from './PostsList'
 
 export default class Posts extends React.Component {
 
@@ -48,18 +49,9 @@ export default class Posts extends React.Component {
 
                 {/* this map through all of the post produced from handlefetch() 
                     TODO: make sure to have this converted into a post component i guess once you have the minimal product working.
+                    TODO: create a new component that has posts information so that this would be cleaner.
                 */}
-                {this.state.posts && 
-                    
-                    (this.state.posts).map((postInfo) => (
-                        <li key={postInfo.id} className='post'>
-                            <h4 className='link'>{postInfo.title}</h4>
-                            <span>by {postInfo.by} </span>
-                            <span>on {new Date(postInfo.time).toUTCString()} </span>
-                            <span>with {postInfo.descendants} comments</span>
-                        </li>
-                    ))
-                }
+                <PostsList posts={this.state.posts} />
             </React.Fragment>
         )
     }
